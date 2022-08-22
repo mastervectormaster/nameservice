@@ -9,6 +9,8 @@
  * ---------------------------------------------------------------
  */
 
+export type NameserviceMsgBuyNameResponse = object;
+
 /**
  * Params defines the parameters for the module.
  */
