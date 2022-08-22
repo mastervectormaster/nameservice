@@ -9,6 +9,7 @@ option go_package = "github.com/mastervectormaster/nameservice/x/nameservice/typ
 service Msg {
       rpc BuyName(MsgBuyName) returns (MsgBuyNameResponse);
   rpc SetName(MsgSetName) returns (MsgSetNameResponse);
+  rpc DeleteName(MsgDeleteName) returns (MsgDeleteNameResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -28,6 +29,14 @@ message MsgSetName {
 }
 
 message MsgSetNameResponse {
+}
+
+message MsgDeleteName {
+  string creator = 1;
+  string name = 2;
+}
+
+message MsgDeleteNameResponse {
 }
 
 // this line is used by starport scaffolding # proto/tx/message

@@ -51554,6 +51554,8 @@ definitions:
       the connection handshake.
   mastervectormaster.nameservice.nameservice.MsgBuyNameResponse:
     type: object
+  mastervectormaster.nameservice.nameservice.MsgDeleteNameResponse:
+    type: object
   mastervectormaster.nameservice.nameservice.MsgSetNameResponse:
     type: object
   mastervectormaster.nameservice.nameservice.Params:

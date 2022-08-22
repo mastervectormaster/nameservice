@@ -11,6 +11,8 @@
 
 export type NameserviceMsgBuyNameResponse = object;
 
+export type NameserviceMsgDeleteNameResponse = object;
+
 export type NameserviceMsgSetNameResponse = object;
 
 /**
