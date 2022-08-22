@@ -6,7 +6,7 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	_ "github.com/cosmos/cosmos-sdk/types/query"
+	query "github.com/cosmos/cosmos-sdk/types/query"
 	_ "github.com/gogo/protobuf/gogoproto"
 	grpc1 "github.com/gogo/protobuf/grpc"
 	proto "github.com/gogo/protobuf/proto"
@@ -113,35 +113,235 @@ func (m *QueryParamsResponse) GetParams() Params {
 	return Params{}
 }
 
+type QueryGetWhoisRequest struct {
+	Index string `protobuf:"bytes,1,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *QueryGetWhoisRequest) Reset()         { *m = QueryGetWhoisRequest{} }
+func (m *QueryGetWhoisRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryGetWhoisRequest) ProtoMessage()    {}
+func (*QueryGetWhoisRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_37776ef2c2bc2f1b, []int{2}
+}
+func (m *QueryGetWhoisRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetWhoisRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetWhoisRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetWhoisRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetWhoisRequest.Merge(m, src)
+}
+func (m *QueryGetWhoisRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetWhoisRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetWhoisRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetWhoisRequest proto.InternalMessageInfo
+
+func (m *QueryGetWhoisRequest) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type QueryGetWhoisResponse struct {
+	Whois Whois `protobuf:"bytes,1,opt,name=whois,proto3" json:"whois"`
+}
+
+func (m *QueryGetWhoisResponse) Reset()         { *m = QueryGetWhoisResponse{} }
+func (m *QueryGetWhoisResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryGetWhoisResponse) ProtoMessage()    {}
+func (*QueryGetWhoisResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_37776ef2c2bc2f1b, []int{3}
+}
+func (m *QueryGetWhoisResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryGetWhoisResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryGetWhoisResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryGetWhoisResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryGetWhoisResponse.Merge(m, src)
+}
+func (m *QueryGetWhoisResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryGetWhoisResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryGetWhoisResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryGetWhoisResponse proto.InternalMessageInfo
+
+func (m *QueryGetWhoisResponse) GetWhois() Whois {
+	if m != nil {
+		return m.Whois
+	}
+	return Whois{}
+}
+
+type QueryAllWhoisRequest struct {
+	Pagination *query.PageRequest `protobuf:"bytes,1,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllWhoisRequest) Reset()         { *m = QueryAllWhoisRequest{} }
+func (m *QueryAllWhoisRequest) String() string { return proto.CompactTextString(m) }
+func (*QueryAllWhoisRequest) ProtoMessage()    {}
+func (*QueryAllWhoisRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_37776ef2c2bc2f1b, []int{4}
+}
+func (m *QueryAllWhoisRequest) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllWhoisRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllWhoisRequest.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllWhoisRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllWhoisRequest.Merge(m, src)
+}
+func (m *QueryAllWhoisRequest) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllWhoisRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllWhoisRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllWhoisRequest proto.InternalMessageInfo
+
+func (m *QueryAllWhoisRequest) GetPagination() *query.PageRequest {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
+type QueryAllWhoisResponse struct {
+	Whois      []Whois             `protobuf:"bytes,1,rep,name=whois,proto3" json:"whois"`
+	Pagination *query.PageResponse `protobuf:"bytes,2,opt,name=pagination,proto3" json:"pagination,omitempty"`
+}
+
+func (m *QueryAllWhoisResponse) Reset()         { *m = QueryAllWhoisResponse{} }
+func (m *QueryAllWhoisResponse) String() string { return proto.CompactTextString(m) }
+func (*QueryAllWhoisResponse) ProtoMessage()    {}
+func (*QueryAllWhoisResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_37776ef2c2bc2f1b, []int{5}
+}
+func (m *QueryAllWhoisResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *QueryAllWhoisResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_QueryAllWhoisResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *QueryAllWhoisResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_QueryAllWhoisResponse.Merge(m, src)
+}
+func (m *QueryAllWhoisResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *QueryAllWhoisResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_QueryAllWhoisResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_QueryAllWhoisResponse proto.InternalMessageInfo
+
+func (m *QueryAllWhoisResponse) GetWhois() []Whois {
+	if m != nil {
+		return m.Whois
+	}
+	return nil
+}
+
+func (m *QueryAllWhoisResponse) GetPagination() *query.PageResponse {
+	if m != nil {
+		return m.Pagination
+	}
+	return nil
+}
+
 func init() {
 	proto.RegisterType((*QueryParamsRequest)(nil), "mastervectormaster.nameservice.nameservice.QueryParamsRequest")
 	proto.RegisterType((*QueryParamsResponse)(nil), "mastervectormaster.nameservice.nameservice.QueryParamsResponse")
+	proto.RegisterType((*QueryGetWhoisRequest)(nil), "mastervectormaster.nameservice.nameservice.QueryGetWhoisRequest")
+	proto.RegisterType((*QueryGetWhoisResponse)(nil), "mastervectormaster.nameservice.nameservice.QueryGetWhoisResponse")
+	proto.RegisterType((*QueryAllWhoisRequest)(nil), "mastervectormaster.nameservice.nameservice.QueryAllWhoisRequest")
+	proto.RegisterType((*QueryAllWhoisResponse)(nil), "mastervectormaster.nameservice.nameservice.QueryAllWhoisResponse")
 }
 
 func init() { proto.RegisterFile("nameservice/query.proto", fileDescriptor_37776ef2c2bc2f1b) }
 
 var fileDescriptor_37776ef2c2bc2f1b = []byte{
-	// 311 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x91, 0xbd, 0x4a, 0x3b, 0x41,
-	0x14, 0xc5, 0x77, 0xfe, 0xfc, 0x4d, 0x31, 0x76, 0x63, 0xc0, 0x10, 0x64, 0x94, 0x54, 0x92, 0x62,
-	0x87, 0xac, 0x56, 0x82, 0x0a, 0x79, 0x82, 0x98, 0x46, 0xb0, 0x9b, 0x5d, 0x2e, 0xe3, 0x82, 0x3b,
-	0x77, 0x32, 0x33, 0x09, 0xa6, 0xf5, 0x09, 0x04, 0x9f, 0x49, 0x48, 0x67, 0xc0, 0xc6, 0x4a, 0x24,
-	0xf1, 0x41, 0x24, 0x3b, 0x5b, 0x6c, 0xd8, 0xc2, 0x8f, 0xee, 0xec, 0xdd, 0x73, 0x7e, 0xf7, 0x63,
-	0xe8, 0xbe, 0x96, 0x05, 0x38, 0xb0, 0xb3, 0x3c, 0x03, 0x31, 0x99, 0x82, 0x9d, 0xc7, 0xc6, 0xa2,
-	0x47, 0xd6, 0x2f, 0xa4, 0xf3, 0x60, 0x67, 0x90, 0x79, 0xb4, 0x41, 0xc7, 0x35, 0x6f, 0x5d, 0x77,
-	0xdb, 0x0a, 0x15, 0x96, 0x31, 0xb1, 0x51, 0x81, 0xd0, 0x3d, 0x50, 0x88, 0xea, 0x0e, 0x84, 0x34,
-	0xb9, 0x90, 0x5a, 0xa3, 0x97, 0x3e, 0x47, 0xed, 0xaa, 0xbf, 0xfd, 0x0c, 0x5d, 0x81, 0x4e, 0xa4,
-	0xd2, 0x55, 0x8d, 0xc5, 0x6c, 0x90, 0x82, 0x97, 0x03, 0x61, 0xa4, 0xca, 0x75, 0x69, 0xae, 0xbc,
-	0x9d, 0xfa, 0x90, 0x46, 0x5a, 0x59, 0x54, 0x94, 0x5e, 0x9b, 0xb2, 0xab, 0x4d, 0x76, 0x54, 0x16,
-	0xc7, 0x30, 0x99, 0x82, 0xf3, 0x3d, 0x45, 0xf7, 0xb6, 0xaa, 0xce, 0xa0, 0x76, 0xc0, 0x46, 0xb4,
-	0x15, 0xc2, 0x1d, 0x72, 0x44, 0x8e, 0x77, 0x93, 0x24, 0xfe, 0xf9, 0x8e, 0x71, 0x60, 0x0d, 0xff,
-	0x2f, 0xde, 0x0f, 0xa3, 0x71, 0xc5, 0x49, 0x5e, 0x08, 0xdd, 0x29, 0x3b, 0xb1, 0x67, 0x42, 0x5b,
-	0xc1, 0xc2, 0x2e, 0x7e, 0x83, 0x6d, 0x4e, 0xdf, 0xbd, 0xfc, 0x73, 0x3e, 0xec, 0xd9, 0x3b, 0x7b,
-	0x78, 0xfd, 0x7c, 0xfa, 0x77, 0xca, 0x12, 0xd1, 0x04, 0x89, 0xfa, 0x29, 0x9b, 0x67, 0x1d, 0x5e,
-	0x2f, 0x56, 0x9c, 0x2c, 0x57, 0x9c, 0x7c, 0xac, 0x38, 0x79, 0x5c, 0xf3, 0x68, 0xb9, 0xe6, 0xd1,
-	0xdb, 0x9a, 0x47, 0x37, 0xe7, 0x2a, 0xf7, 0xb7, 0xd3, 0x34, 0xce, 0xb0, 0xf8, 0x8e, 0x7b, 0xbf,
-	0xf5, 0xe5, 0xe7, 0x06, 0x5c, 0xda, 0x2a, 0x1f, 0xec, 0xe4, 0x2b, 0x00, 0x00, 0xff, 0xff, 0x35,
-	0x24, 0xf7, 0x63, 0x71, 0x02, 0x00, 0x00,
+	// 505 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x94, 0xcd, 0x6e, 0x13, 0x31,
+	0x10, 0xc7, 0xe3, 0xd2, 0x44, 0x60, 0x6e, 0x26, 0x88, 0x2a, 0x42, 0x0b, 0xf2, 0x01, 0x50, 0x85,
+	0x6c, 0x25, 0xe5, 0x52, 0x10, 0x1f, 0xe9, 0x81, 0x9e, 0x90, 0x42, 0x2e, 0x95, 0x38, 0x20, 0x39,
+	0xc1, 0xb8, 0x2b, 0xed, 0xae, 0xb7, 0x6b, 0x27, 0xb4, 0x42, 0x5c, 0x78, 0x02, 0x24, 0x1e, 0x84,
+	0xa7, 0x40, 0xaa, 0xb8, 0x50, 0x89, 0x0b, 0x27, 0x84, 0x12, 0xce, 0x3c, 0x03, 0xda, 0xb1, 0x51,
+	0xf7, 0xe3, 0xd0, 0x6e, 0x7a, 0xb3, 0xd7, 0x33, 0xff, 0xf9, 0xfd, 0x3d, 0xe3, 0xc5, 0x37, 0x12,
+	0x11, 0x4b, 0x23, 0xb3, 0x79, 0x38, 0x95, 0xfc, 0x60, 0x26, 0xb3, 0x23, 0x96, 0x66, 0xda, 0x6a,
+	0xb2, 0x19, 0x0b, 0x63, 0x65, 0x36, 0x97, 0x53, 0xab, 0x33, 0xb7, 0x66, 0x85, 0xd8, 0xe2, 0xba,
+	0xd7, 0x55, 0x5a, 0x69, 0x48, 0xe3, 0xf9, 0xca, 0x29, 0xf4, 0x6e, 0x2a, 0xad, 0x55, 0x24, 0xb9,
+	0x48, 0x43, 0x2e, 0x92, 0x44, 0x5b, 0x61, 0x43, 0x9d, 0x18, 0x7f, 0xba, 0x39, 0xd5, 0x26, 0xd6,
+	0x86, 0x4f, 0x84, 0xf1, 0x85, 0xf9, 0xbc, 0x3f, 0x91, 0x56, 0xf4, 0x79, 0x2a, 0x54, 0x98, 0x40,
+	0xb0, 0x8f, 0xdd, 0x28, 0x42, 0xa6, 0x22, 0x13, 0xf1, 0x7f, 0x95, 0x12, 0xfe, 0xbb, 0x7d, 0x1d,
+	0xfa, 0x03, 0xda, 0xc5, 0xe4, 0x65, 0x2e, 0x3a, 0x82, 0xe8, 0xb1, 0x3c, 0x98, 0x49, 0x63, 0xa9,
+	0xc2, 0xd7, 0x4a, 0x5f, 0x4d, 0xaa, 0x13, 0x23, 0xc9, 0x08, 0x77, 0x9c, 0xea, 0x06, 0xba, 0x8d,
+	0xee, 0x5d, 0x1d, 0x0c, 0xd8, 0xf9, 0xcd, 0x33, 0xa7, 0xb5, 0xb3, 0x7e, 0xfc, 0xeb, 0x56, 0x6b,
+	0xec, 0x75, 0xe8, 0x7d, 0xdc, 0x85, 0x42, 0xbb, 0xd2, 0xee, 0xe5, 0x54, 0x1e, 0x80, 0x74, 0x71,
+	0x3b, 0x4c, 0xde, 0xc8, 0x43, 0x28, 0x74, 0x65, 0xec, 0x36, 0xf4, 0x2d, 0xbe, 0x5e, 0x89, 0xf6,
+	0x60, 0x2f, 0x70, 0x1b, 0x4c, 0x79, 0xae, 0x7e, 0x13, 0x2e, 0x50, 0xf2, 0x58, 0x4e, 0x85, 0xbe,
+	0xf6, 0x54, 0xc3, 0x28, 0x2a, 0x51, 0x3d, 0xc7, 0xf8, 0xf4, 0xce, 0x7d, 0xad, 0x3b, 0xcc, 0x35,
+	0x88, 0xe5, 0x0d, 0x62, 0x6e, 0x32, 0x7c, 0x83, 0xd8, 0x48, 0x28, 0xe9, 0x73, 0xc7, 0x85, 0x4c,
+	0xfa, 0x05, 0x79, 0x23, 0xa7, 0x05, 0xea, 0x46, 0x2e, 0x5d, 0xdc, 0x08, 0xd9, 0x2d, 0x01, 0xaf,
+	0x01, 0xf0, 0xdd, 0x33, 0x81, 0x1d, 0x4b, 0x91, 0x78, 0xf0, 0x77, 0x1d, 0xb7, 0x81, 0x98, 0x7c,
+	0x45, 0xb8, 0xe3, 0x5a, 0x49, 0x9e, 0x34, 0xa1, 0xab, 0x4f, 0x59, 0xef, 0xe9, 0xca, 0xf9, 0x8e,
+	0x90, 0x3e, 0xfc, 0xf8, 0xe3, 0xcf, 0xe7, 0xb5, 0x07, 0x64, 0xc0, 0xeb, 0x42, 0xbc, 0x38, 0xf1,
+	0xf5, 0x77, 0x41, 0xbe, 0x23, 0xdc, 0x86, 0x1b, 0x23, 0xcf, 0x1a, 0x63, 0x54, 0xa6, 0xb5, 0x37,
+	0xbc, 0x80, 0x82, 0xb7, 0x32, 0x04, 0x2b, 0x8f, 0xc8, 0x76, 0x13, 0x2b, 0xd0, 0x64, 0xfe, 0x1e,
+	0x1e, 0xc7, 0x07, 0xf2, 0x0d, 0xe1, 0xcb, 0x20, 0x3a, 0x8c, 0xa2, 0x15, 0x4c, 0x55, 0x86, 0x7d,
+	0x05, 0x53, 0xd5, 0x69, 0xa6, 0xdb, 0x60, 0x6a, 0x8b, 0xf4, 0x1b, 0x9b, 0xda, 0xd9, 0x3b, 0x5e,
+	0x04, 0xe8, 0x64, 0x11, 0xa0, 0xdf, 0x8b, 0x00, 0x7d, 0x5a, 0x06, 0xad, 0x93, 0x65, 0xd0, 0xfa,
+	0xb9, 0x0c, 0x5a, 0xaf, 0x1e, 0xab, 0xd0, 0xee, 0xcf, 0x26, 0x6c, 0xaa, 0xe3, 0xb3, 0x64, 0x0f,
+	0x4b, 0x3b, 0x7b, 0x94, 0x4a, 0x33, 0xe9, 0xc0, 0x7f, 0x6f, 0xeb, 0x5f, 0x00, 0x00, 0x00, 0xff,
+	0xff, 0xf3, 0x0b, 0xb5, 0xd8, 0xd1, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -158,6 +358,10 @@ const _ = grpc.SupportPackageIsVersion4
 type QueryClient interface {
 	// Parameters queries the parameters of the module.
 	Params(ctx context.Context, in *QueryParamsRequest, opts ...grpc.CallOption) (*QueryParamsResponse, error)
+	// Queries a Whois by index.
+	Whois(ctx context.Context, in *QueryGetWhoisRequest, opts ...grpc.CallOption) (*QueryGetWhoisResponse, error)
+	// Queries a list of Whois items.
+	WhoisAll(ctx context.Context, in *QueryAllWhoisRequest, opts ...grpc.CallOption) (*QueryAllWhoisResponse, error)
 }
 
 type queryClient struct {
@@ -177,10 +381,32 @@ func (c *queryClient) Params(ctx context.Context, in *QueryParamsRequest, opts .
 	return out, nil
 }
 
+func (c *queryClient) Whois(ctx context.Context, in *QueryGetWhoisRequest, opts ...grpc.CallOption) (*QueryGetWhoisResponse, error) {
+	out := new(QueryGetWhoisResponse)
+	err := c.cc.Invoke(ctx, "/mastervectormaster.nameservice.nameservice.Query/Whois", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *queryClient) WhoisAll(ctx context.Context, in *QueryAllWhoisRequest, opts ...grpc.CallOption) (*QueryAllWhoisResponse, error) {
+	out := new(QueryAllWhoisResponse)
+	err := c.cc.Invoke(ctx, "/mastervectormaster.nameservice.nameservice.Query/WhoisAll", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // QueryServer is the server API for Query service.
 type QueryServer interface {
 	// Parameters queries the parameters of the module.
 	Params(context.Context, *QueryParamsRequest) (*QueryParamsResponse, error)
+	// Queries a Whois by index.
+	Whois(context.Context, *QueryGetWhoisRequest) (*QueryGetWhoisResponse, error)
+	// Queries a list of Whois items.
+	WhoisAll(context.Context, *QueryAllWhoisRequest) (*QueryAllWhoisResponse, error)
 }
 
 // UnimplementedQueryServer can be embedded to have forward compatible implementations.
@@ -189,6 +415,12 @@ type UnimplementedQueryServer struct {
 
 func (*UnimplementedQueryServer) Params(ctx context.Context, req *QueryParamsRequest) (*QueryParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Params not implemented")
+}
+func (*UnimplementedQueryServer) Whois(ctx context.Context, req *QueryGetWhoisRequest) (*QueryGetWhoisResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Whois not implemented")
+}
+func (*UnimplementedQueryServer) WhoisAll(ctx context.Context, req *QueryAllWhoisRequest) (*QueryAllWhoisResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method WhoisAll not implemented")
 }
 
 func RegisterQueryServer(s grpc1.Server, srv QueryServer) {
@@ -213,6 +445,42 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Query_Whois_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryGetWhoisRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).Whois(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/mastervectormaster.nameservice.nameservice.Query/Whois",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).Whois(ctx, req.(*QueryGetWhoisRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Query_WhoisAll_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(QueryAllWhoisRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(QueryServer).WhoisAll(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/mastervectormaster.nameservice.nameservice.Query/WhoisAll",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(QueryServer).WhoisAll(ctx, req.(*QueryAllWhoisRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Query_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "mastervectormaster.nameservice.nameservice.Query",
 	HandlerType: (*QueryServer)(nil),
@@ -220,6 +488,14 @@ var _Query_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Params",
 			Handler:    _Query_Params_Handler,
+		},
+		{
+			MethodName: "Whois",
+			Handler:    _Query_Whois_Handler,
+		},
+		{
+			MethodName: "WhoisAll",
+			Handler:    _Query_WhoisAll_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -282,6 +558,153 @@ func (m *QueryParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *QueryGetWhoisRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetWhoisRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetWhoisRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintQuery(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryGetWhoisResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryGetWhoisResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryGetWhoisResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	{
+		size, err := m.Whois.MarshalToSizedBuffer(dAtA[:i])
+		if err != nil {
+			return 0, err
+		}
+		i -= size
+		i = encodeVarintQuery(dAtA, i, uint64(size))
+	}
+	i--
+	dAtA[i] = 0xa
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllWhoisRequest) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllWhoisRequest) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllWhoisRequest) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *QueryAllWhoisResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *QueryAllWhoisResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *QueryAllWhoisResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		{
+			size, err := m.Pagination.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintQuery(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Whois) > 0 {
+		for iNdEx := len(m.Whois) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Whois[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintQuery(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0xa
+		}
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintQuery(dAtA []byte, offset int, v uint64) int {
 	offset -= sovQuery(v)
 	base := offset
@@ -310,6 +733,62 @@ func (m *QueryParamsResponse) Size() (n int) {
 	_ = l
 	l = m.Params.Size()
 	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryGetWhoisRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryGetWhoisResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = m.Whois.Size()
+	n += 1 + l + sovQuery(uint64(l))
+	return n
+}
+
+func (m *QueryAllWhoisRequest) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
+	return n
+}
+
+func (m *QueryAllWhoisResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if len(m.Whois) > 0 {
+		for _, e := range m.Whois {
+			l = e.Size()
+			n += 1 + l + sovQuery(uint64(l))
+		}
+	}
+	if m.Pagination != nil {
+		l = m.Pagination.Size()
+		n += 1 + l + sovQuery(uint64(l))
+	}
 	return n
 }
 
@@ -428,6 +907,377 @@ func (m *QueryParamsResponse) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if err := m.Params.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetWhoisRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetWhoisRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetWhoisRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryGetWhoisResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryGetWhoisResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryGetWhoisResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whois", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if err := m.Whois.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllWhoisRequest) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllWhoisRequest: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllWhoisRequest: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageRequest{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipQuery(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *QueryAllWhoisResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowQuery
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: QueryAllWhoisResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: QueryAllWhoisResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Whois", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Whois = append(m.Whois, Whois{})
+			if err := m.Whois[len(m.Whois)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pagination", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowQuery
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthQuery
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthQuery
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Pagination == nil {
+				m.Pagination = &query.PageResponse{}
+			}
+			if err := m.Pagination.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
